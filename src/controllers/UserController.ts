@@ -30,6 +30,16 @@ class UserController {
     }
   }
 
+  public create = async (req: Request, res: Response, next: NextFunction) => {
+    try {
+      const user = req.body;
+      const createdUser = await this.userService.create(user);
+      res.status(201).json(createdUser);
+    } catch (error) {
+      next(error);
+    }
+  }
+
 }
 
 export default UserController;

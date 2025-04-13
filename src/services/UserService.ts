@@ -2,6 +2,8 @@ import { ModelStatic } from "sequelize";
 import User from "../database/models/User";
 import md5 from "md5";
 import { sign } from "../jwt/jwt";
+import IUser from "../interfaces/IUser";
+import schema from "./validations/schema";
 
 class UserService {
   private userModel: ModelStatic<User> = User;
@@ -31,6 +33,21 @@ class UserService {
     const token = sign({ id, email });
 
     return { id, email, token };
+  }
+
+  async create(user: IUser) {
+    const { error } = schema.user.validate(user);
+    if (error) {
+      return { message: error.message };
+    }
+
+    const hashPassword = md5(user.password);
+    const createdUser = await this.userModel.create({
+      ...user,
+      password: hashPassword,
+    });
+
+    return createdUser;
   }
 }
 
