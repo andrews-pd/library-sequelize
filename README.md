@@ -22,11 +22,17 @@ Um repositório contendo um projeto de estudo utilizando Sequelize.
 ├── src/
 │   ├── app.ts                # Configuração do servidor Express
 │   ├── server.ts             # Inicialização do servidor
-│   └── database/
-│       ├── config/           # Configurações do banco de dados
-│       ├── migrations/       # Arquivos de migração
-│       ├── models/           # Definições de modelos Sequelize
-│       └── seeders/          # Seeders para popular o banco
+│   ├── controllers/          # Controladores para gerenciar as requisições
+│   ├── services/             # Lógica de negócios e integração com os modelos
+│   │   └── validations/      # Validações específicas da aplicação
+│   ├── database/
+│   │   ├── config/           # Configurações do banco de dados
+│   │   ├── migrations/       # Arquivos de migração
+│   │   ├── models/           # Definições de modelos Sequelize
+│   │   └── seeders/          # Seeders para popular o banco
+│   ├── interfaces/           # Definições de tipos e interfaces TypeScript
+│   ├── jwt/                  # Configuração e gerenciamento de tokens JWT
+│   ├── routes/               # Definição das rotas da aplicação
 ├── build/                    # Código transpilado
 ├── docker-compose.yaml       # Configuração do Docker Compose
 ├── Dockerfile                # Configuração do Docker
