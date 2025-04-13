@@ -4,7 +4,7 @@ import { NextFunction, Request, Response } from 'express';
 
 const secret = process.env.JWT_SECRET;
 
-const sign = (payload: { id: number, email: number }) => {
+const sign = (payload: { id: number, email: string }) => {
   const jwtConfig: SignOptions = {
     algorithm: 'HS256',
     expiresIn: '1d',

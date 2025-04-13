@@ -17,6 +17,19 @@ class UserController {
     }
   }
 
+  public async login(req: Request, res: Response, next: NextFunction) {
+    try {
+      const { email, password } = req.body;
+      const user = await this.userService.login(email, password);
+      if (user.message) {
+        return res.status(401).json({ message: user.message });
+      }
+      res.status(200).json(user);
+    } catch (error) {
+      next(error);
+    }
+  }
+
 }
 
 export default UserController;
