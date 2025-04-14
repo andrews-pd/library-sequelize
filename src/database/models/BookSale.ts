@@ -3,6 +3,7 @@ import db from '.';
 import sequelize from 'sequelize';
 import Book from './Book';
 import Category from './Category';
+import Sale from './Sale';
 
 class BookSale extends Model {
   declare bookId: number;
@@ -37,18 +38,18 @@ BookSale.init({
   },
 }, {
   sequelize: db,
-  tableName: 'bookCategory',
+  tableName: 'bookSales',
   timestamps: false,
 });
 
-Book.belongsToMany(Category, {
+Book.belongsToMany(Sale, {
   through: BookSale,
   foreignKey: 'bookId',
   otherKey: 'saleId',
   as: 'sales'
 });
 
-Category.belongsToMany(Book, {
+Sale.belongsToMany(Book, {
   through: BookSale,
   foreignKey: 'saleId',
   otherKey: 'bookId',

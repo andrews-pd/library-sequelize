@@ -32,7 +32,7 @@ Whishlist.init({
   },
 }, {
   sequelize: db,
-  tableName: 'whishlist',
+  tableName: 'whishlists',
   timestamps: false,
 });
 

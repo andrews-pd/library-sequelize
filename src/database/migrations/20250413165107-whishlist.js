@@ -6,6 +6,7 @@ module.exports = {
     await queryInterface.createTable('whishlists', {
       bookId: {
         type: Sequelize.INTEGER,
+        primaryKey: true,
         allowNull: false,
         references: {
           model: 'books',
@@ -16,6 +17,7 @@ module.exports = {
       },
       userId: {
         type: Sequelize.INTEGER,
+        primaryKey: true,
         allowNull: false,
         references: {
           model: 'users',
